@@ -78,6 +78,7 @@ export const CategoriesForm = ({ initialData }: CategoriesFormProps) => {
       }
       router.refresh();
       toast.success(toastMessage);
+      router.push("/categories");
     } catch (error) {
       toast.error(toastMessage);
     } finally {

@@ -41,7 +41,7 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
   ];
 
   return (
-    <aside className="w-full mt-4">
+    <aside className="w-full h-full mt-4">
       <nav className={cn("p-2", className)}>
         {routes.map((item) => (
           <Link

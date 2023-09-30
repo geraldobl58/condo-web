@@ -25,7 +25,9 @@ export default async function DashboardLayout({
             <UserButton afterSignOutUrl="/" showName={true} />
           </div>
         </header>
-        <section className="flex-grow-[1] p-6">{children}</section>
+        <section className="flex-grow-[1] p-6 h-[700px] overflow-auto">
+          {children}
+        </section>
       </div>
     </div>
   );

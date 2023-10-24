@@ -54,6 +54,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+import { formShema } from "../../schema";
+
 interface PropertiesFormProps {
   initialData:
     | (Property & {
@@ -62,21 +64,6 @@ interface PropertiesFormProps {
     | null;
   categories: Category[];
 }
-
-export const formShema = z.object({
-  name: z.string().min(3),
-  images: z.object({ url: z.string() }).array().min(1),
-  categoryId: z.string().min(1),
-  address: z.string().min(3),
-  neighborhood: z.string().min(10),
-  price: z.coerce.number(),
-  description: z.string().min(3),
-  type: z.string().min(3),
-  bedrooms: z.coerce.number(),
-  bathrooms: z.coerce.number(),
-  garage: z.coerce.number(),
-  land: z.coerce.number(),
-});
 
 type PropertiesFormValues = z.infer<typeof formShema>;
 
@@ -210,40 +197,6 @@ export const PropertyForm = ({
               )}
             />
           </div>
-          <div className="grid gap-8">
-            <FormField
-              control={form.control}
-              name="categoryId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Categoria</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Selecionar"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {categories.map((item) => (
-                        <SelectItem key={item.id} value={item.id}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
@@ -303,6 +256,38 @@ export const PropertyForm = ({
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
+              name="categoryId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Categoria</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecionar"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {categories.map((item) => (
+                        <SelectItem key={item.id} value={item.id}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="price"
               render={({ field }) => (
                 <FormItem>
@@ -314,24 +299,7 @@ export const PropertyForm = ({
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Descrição</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      disabled={loading}
-                      placeholder="Descrição completa..."
-                      {...field}
-                      className="w-full"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+
             <FormField
               control={form.control}
               name="type"
@@ -416,6 +384,26 @@ export const PropertyForm = ({
                     <Input
                       type="number"
                       disabled={loading}
+                      {...field}
+                      className="w-full"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-8">
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Descrição</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      disabled={loading}
+                      placeholder="Descrição completa..."
                       {...field}
                       className="w-full"
                     />

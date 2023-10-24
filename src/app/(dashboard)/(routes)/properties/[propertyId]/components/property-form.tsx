@@ -327,12 +327,6 @@ export const PropertyForm = ({
                       {...field}
                       className="w-full"
                     />
-                    {/* <Input
-                      disabled={loading}
-                      placeholder="Descrição completa..."
-                      {...field}
-                      className="w-full"
-                    /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -347,7 +341,7 @@ export const PropertyForm = ({
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Tipo"
+                      placeholder="EX: (Condominio/Terreo)"
                       {...field}
                       className="w-full"
                     />

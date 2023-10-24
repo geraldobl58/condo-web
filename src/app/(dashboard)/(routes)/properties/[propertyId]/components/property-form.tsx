@@ -52,6 +52,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 interface PropertiesFormProps {
   initialData:
@@ -320,12 +321,18 @@ export const PropertyForm = ({
                 <FormItem>
                   <FormLabel>Descrição</FormLabel>
                   <FormControl>
-                    <Input
+                    <Textarea
                       disabled={loading}
                       placeholder="Descrição completa..."
                       {...field}
                       className="w-full"
                     />
+                    {/* <Input
+                      disabled={loading}
+                      placeholder="Descrição completa..."
+                      {...field}
+                      className="w-full"
+                    /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>

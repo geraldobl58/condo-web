@@ -12,10 +12,10 @@ export type PropertyColumn = {
   neighborhood: string;
   price: string;
   type: string;
-  bedrooms: string;
-  bathrooms: string;
-  garage: string;
-  land: string;
+  bedrooms: number;
+  bathrooms: number;
+  garage: number;
+  land: number;
 };
 
 export const columns: ColumnDef<PropertyColumn>[] = [

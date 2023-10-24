@@ -4,7 +4,12 @@ import { useParams, usePathname } from "next/navigation";
 
 import Link from "next/link";
 
-import { Currency, LayoutDashboard, SettingsIcon } from "lucide-react";
+import {
+  Currency,
+  HomeIcon,
+  LayoutDashboard,
+  SettingsIcon,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -31,6 +36,12 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Categorias",
       href: `/categories`,
       active: pathname === `/categories` || pathname === "/categories/new",
+    },
+    {
+      icon: <HomeIcon />,
+      label: "Imóveis",
+      href: `/properties`,
+      active: pathname === `/properties` || pathname === "/properties/new",
     },
     {
       icon: <SettingsIcon />,

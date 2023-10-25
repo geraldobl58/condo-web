@@ -16,9 +16,19 @@ export type PropertyColumn = {
   bathrooms: number;
   garage: number;
   land: number;
+  isFeatured: boolean;
 };
 
 export const columns: ColumnDef<PropertyColumn>[] = [
+  {
+    accessorKey: "isFeatured",
+    header: "Destaque",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        {row.original.isFeatured ? "Ativo" : "Inativo"}
+      </div>
+    ),
+  },
   {
     accessorKey: "category",
     header: "Categoria",
@@ -59,6 +69,7 @@ export const columns: ColumnDef<PropertyColumn>[] = [
     accessorKey: "land",
     header: "Terreno",
   },
+
   {
     id: "actions",
     cell: ({ row }) => <CellAction data={row.original} />,

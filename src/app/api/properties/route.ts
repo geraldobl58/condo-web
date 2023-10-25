@@ -23,6 +23,7 @@ export async function POST(req: Request) {
       bathrooms,
       garage,
       land,
+      isFeatured,
     } = body;
 
     if (!userId) {
@@ -95,6 +96,7 @@ export async function POST(req: Request) {
         bathrooms,
         garage,
         land,
+        isFeatured,
       },
     });
 
@@ -108,11 +110,14 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
+
     const categoryId = searchParams.get("categoryId") || undefined;
+    const isFeatured = searchParams.get("isFeatured");
 
     const properties = await prismadb.property.findMany({
       where: {
         categoryId,
+        isFeatured: isFeatured ? true : undefined,
       },
       include: {
         images: true,

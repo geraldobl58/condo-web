@@ -27,6 +27,7 @@ const PropertiesPage = async () => {
     bathrooms: item.bathrooms,
     garage: item.garage,
     land: item.land,
+    isFeatured: item.isFeatured,
   }));
 
   return (

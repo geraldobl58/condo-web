@@ -62,6 +62,7 @@ export async function PATCH(
       bathrooms,
       garage,
       land,
+      isFeatured,
     } = body;
 
     if (!userId) {
@@ -139,6 +140,7 @@ export async function PATCH(
         bathrooms,
         garage,
         land,
+        isFeatured,
       },
     });
 

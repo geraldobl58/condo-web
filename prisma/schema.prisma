@@ -31,6 +31,8 @@ model Property {
   garage       Int
   land         Int
 
+  isFeatured Boolean @default(false)
+
   categoryId String
   category   Category @relation("CategoryToProperty", fields: [categoryId], references: [id])
 

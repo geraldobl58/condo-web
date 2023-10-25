@@ -9,7 +9,7 @@ import { CategoryColumn } from "./components/columns";
 const CategoriesPage = async () => {
   const categories = await prismadb.category.findMany({
     orderBy: {
-      createdAt: "desc",
+      name: "asc",
     },
   });
 

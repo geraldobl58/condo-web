@@ -37,7 +37,7 @@ export async function GET(req: Request) {
   try {
     const categories = await prismadb.category.findMany({
       orderBy: {
-        createdAt: "desc",
+        name: "asc",
       },
     });
 

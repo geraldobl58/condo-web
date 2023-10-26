@@ -12,11 +12,24 @@ const PropertyPage = async ({ params }: { params: { propertyId: string } }) => {
     },
   });
 
-  const categories = await prismadb.category.findMany({});
+  const categories = await prismadb.category.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+  const bathrooms = await prismadb.bathroom.findMany({
+    orderBy: {
+      quantity: "asc",
+    },
+  });
 
   return (
     <>
-      <PropertyForm initialData={properties} categories={categories} />
+      <PropertyForm
+        initialData={properties}
+        categories={categories}
+        bathrooms={bathrooms}
+      />
     </>
   );
 };

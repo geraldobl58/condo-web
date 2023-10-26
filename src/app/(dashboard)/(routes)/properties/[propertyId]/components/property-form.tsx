@@ -29,7 +29,7 @@ z.setErrorMap(zodI18nMap);
 
 import { Trash } from "lucide-react";
 
-import { Category, Image, Property } from "@prisma/client";
+import { Bathroom, Category, Image, Property } from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
@@ -65,6 +65,7 @@ interface PropertiesFormProps {
       })
     | null;
   categories: Category[];
+  bathrooms: Bathroom[];
 }
 
 type PropertiesFormValues = z.infer<typeof formShema>;
@@ -72,6 +73,7 @@ type PropertiesFormValues = z.infer<typeof formShema>;
 export const PropertyForm = ({
   initialData,
   categories,
+  bathrooms,
 }: PropertiesFormProps) => {
   const params = useParams();
   const router = useRouter();
@@ -104,8 +106,8 @@ export const PropertyForm = ({
           price: 0,
           description: "",
           type: "",
+          bathroomId: "",
           bedrooms: 0,
-          bathrooms: 0,
           garage: 0,
           land: 0,
           isFeatured: false,
@@ -347,25 +349,39 @@ export const PropertyForm = ({
           <div className="grid grid-cols-4 gap-8">
             <FormField
               control={form.control}
-              name="bedrooms"
+              name="bathroomId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Banheiros</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      disabled={loading}
-                      {...field}
-                      className="w-full"
-                    />
-                  </FormControl>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecionar"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {bathrooms.map((item) => (
+                        <SelectItem key={item.id} value={item.id}>
+                          {item.quantity}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               control={form.control}
-              name="bathrooms"
+              name="bedrooms"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Quartos</FormLabel>

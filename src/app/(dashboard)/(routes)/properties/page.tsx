@@ -12,6 +12,7 @@ const PropertiesPage = async () => {
     },
     include: {
       category: true,
+      bathroom: true,
     },
   });
 
@@ -23,8 +24,8 @@ const PropertiesPage = async () => {
     neighborhood: item.neighborhood,
     price: formattedPrice.format(item.price.toNumber()),
     type: item.type,
+    bathrooms: item.bathroom.quantity,
     bedrooms: item.bedrooms,
-    bathrooms: item.bathrooms,
     garage: item.garage,
     land: item.land,
     isFeatured: item.isFeatured,

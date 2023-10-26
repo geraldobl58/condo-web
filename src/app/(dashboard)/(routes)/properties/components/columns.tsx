@@ -54,11 +54,11 @@ export const columns: ColumnDef<PropertyColumn>[] = [
     header: "Tipo",
   },
   {
-    accessorKey: "bedrooms",
+    accessorKey: "bathrooms",
     header: "Banheiros",
   },
   {
-    accessorKey: "bathrooms",
+    accessorKey: "bedrooms",
     header: "Quartos",
   },
   {

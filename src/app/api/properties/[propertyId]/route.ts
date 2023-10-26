@@ -25,6 +25,7 @@ export async function GET(
       include: {
         images: true,
         category: true,
+        bathroom: true,
       },
     });
 
@@ -59,7 +60,7 @@ export async function PATCH(
       description,
       type,
       bedrooms,
-      bathrooms,
+      bathroomId,
       garage,
       land,
       isFeatured,
@@ -105,8 +106,8 @@ export async function PATCH(
       return new NextResponse("Bedrooms is required", { status: 400 });
     }
 
-    if (!bathrooms) {
-      return new NextResponse("Bathrooms is required", { status: 400 });
+    if (!bathroomId) {
+      return new NextResponse("BathroomId is required", { status: 400 });
     }
 
     if (!garage) {
@@ -137,7 +138,7 @@ export async function PATCH(
         description,
         type,
         bedrooms,
-        bathrooms,
+        bathroomId,
         garage,
         land,
         isFeatured,

@@ -39,16 +39,16 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       active: pathname === `/categories` || pathname === "/categories/new",
     },
     {
-      icon: <HomeIcon />,
-      label: "Imóveis",
-      href: `/properties`,
-      active: pathname === `/properties` || pathname === "/properties/new",
-    },
-    {
       icon: <Bath />,
       label: "Banheiros",
       href: `/bathrooms`,
       active: pathname === `/bathrooms` || pathname === "/bathrooms/new",
+    },
+    {
+      icon: <HomeIcon />,
+      label: "Imóveis",
+      href: `/properties`,
+      active: pathname === `/properties` || pathname === "/properties/new",
     },
     {
       icon: <SettingsIcon />,

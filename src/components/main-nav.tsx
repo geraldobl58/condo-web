@@ -5,6 +5,7 @@ import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
 
 import {
+  Bath,
   Currency,
   HomeIcon,
   LayoutDashboard,
@@ -42,6 +43,12 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Imóveis",
       href: `/properties`,
       active: pathname === `/properties` || pathname === "/properties/new",
+    },
+    {
+      icon: <Bath />,
+      label: "Banheiros",
+      href: `/bathrooms`,
+      active: pathname === `/bathrooms` || pathname === "/bathrooms/new",
     },
     {
       icon: <SettingsIcon />,

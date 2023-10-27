@@ -62,8 +62,8 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
     {
       icon: <Haze />,
       label: "Tipo do Imóvel",
-      href: `/kind`,
-      active: pathname === `/kind` || pathname === "/kind/new",
+      href: `/kinds`,
+      active: pathname === `/kinds` || pathname === "/kinds/new",
     },
     {
       icon: <HomeIcon />,

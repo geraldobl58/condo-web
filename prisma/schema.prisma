@@ -26,6 +26,14 @@ model Bathroom {
   updatedAt  DateTime   @updatedAt
 }
 
+model Bedroom {
+  id         String     @id @default(uuid())
+  quantity   Int
+  properties Property[] @relation("BedroomToProperty")
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
 model Property {
   id           String  @id @default(uuid())
   name         String
@@ -34,7 +42,6 @@ model Property {
   price        Decimal
   description  String
   type         String
-  bedrooms     Int
   garage       Int
   land         Int
 
@@ -42,6 +49,9 @@ model Property {
 
   bathroomId String
   bathroom   Bathroom @relation("BathroomToProperty", fields: [bathroomId], references: [id])
+
+  bedroomId String
+  bedroom   Bedroom @relation("BedroomToProperty", fields: [bedroomId], references: [id])
 
   categoryId String
   category   Category @relation("CategoryToProperty", fields: [categoryId], references: [id])

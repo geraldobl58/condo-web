@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import {
   Bath,
+  Bed,
   Currency,
   HomeIcon,
   LayoutDashboard,
@@ -43,6 +44,12 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Banheiros",
       href: `/bathrooms`,
       active: pathname === `/bathrooms` || pathname === "/bathrooms/new",
+    },
+    {
+      icon: <Bed />,
+      label: "Quartos",
+      href: `/bedrooms`,
+      active: pathname === `/bedrooms` || pathname === "/bedrooms/new",
     },
     {
       icon: <HomeIcon />,

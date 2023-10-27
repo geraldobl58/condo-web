@@ -42,10 +42,10 @@ model Garage {
   updatedAt  DateTime   @updatedAt
 }
 
-model SaleRent {
+model Kind {
   id         String     @id @default(uuid())
   name       String
-  properties Property[] @relation("SaleRentToProperty")
+  properties Property[] @relation("KindToProperty")
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
@@ -70,8 +70,8 @@ model Property {
   garageId String
   garage   Garage @relation("GarageToProperty", fields: [garageId], references: [id])
 
-  salerentId String
-  salerent   SaleRent @relation("SaleRentToProperty", fields: [salerentId], references: [id])
+  kindId String
+  kind   Kind   @relation("KindToProperty", fields: [kindId], references: [id])
 
   categoryId String
   category   Category @relation("CategoryToProperty", fields: [categoryId], references: [id])

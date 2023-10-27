@@ -28,6 +28,7 @@ export async function GET(
         bathroom: true,
         bedroom: true,
         garage: true,
+        kind: true,
       },
     });
 
@@ -60,7 +61,7 @@ export async function PATCH(
       neighborhood,
       price,
       description,
-      type,
+      kindId,
       bathroomId,
       bedroomId,
       garageId,
@@ -100,8 +101,8 @@ export async function PATCH(
       return new NextResponse("Description is required", { status: 400 });
     }
 
-    if (!type) {
-      return new NextResponse("Type is required", { status: 400 });
+    if (!kindId) {
+      return new NextResponse("KindId is required", { status: 400 });
     }
 
     if (!bathroomId) {
@@ -138,7 +139,7 @@ export async function PATCH(
         neighborhood,
         price,
         description,
-        type,
+        kindId,
         bathroomId,
         bedroomId,
         garageId,

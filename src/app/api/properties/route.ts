@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       neighborhood,
       price,
       description,
-      type,
+      kindId,
       bathroomId,
       bedroomId,
       garageId,
@@ -58,8 +58,8 @@ export async function POST(req: Request) {
       return new NextResponse("Description is required", { status: 400 });
     }
 
-    if (!type) {
-      return new NextResponse("Type is required", { status: 400 });
+    if (!kindId) {
+      return new NextResponse("KindId is required", { status: 400 });
     }
 
     if (!bathroomId) {
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
         neighborhood,
         price,
         description,
-        type,
+        kindId,
         bathroomId,
         bedroomId,
         garageId,
@@ -115,6 +115,7 @@ export async function GET(req: Request) {
     const bathroomId = searchParams.get("bathroomId") || undefined;
     const bedroomId = searchParams.get("bedroomId") || undefined;
     const garageId = searchParams.get("garageId") || undefined;
+    const kindId = searchParams.get("kindId") || undefined;
     const isFeatured = searchParams.get("isFeatured");
 
     const properties = await prismadb.property.findMany({
@@ -123,6 +124,7 @@ export async function GET(req: Request) {
         bathroomId,
         bedroomId,
         garageId,
+        kindId,
         isFeatured: isFeatured ? true : undefined,
       },
       include: {

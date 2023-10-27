@@ -14,6 +14,7 @@ const PropertiesPage = async () => {
       category: true,
       bathroom: true,
       bedroom: true,
+      garage: true,
     },
   });
 
@@ -27,7 +28,7 @@ const PropertiesPage = async () => {
     type: item.type,
     bathrooms: item.bathroom.quantity,
     bedrooms: item.bedroom.quantity,
-    garage: item.garage,
+    garage: item.garage.quantity,
     land: item.land,
     isFeatured: item.isFeatured,
   }));

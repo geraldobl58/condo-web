@@ -29,7 +29,14 @@ z.setErrorMap(zodI18nMap);
 
 import { Trash } from "lucide-react";
 
-import { Bathroom, Bedroom, Category, Image, Property } from "@prisma/client";
+import {
+  Bathroom,
+  Bedroom,
+  Category,
+  Garage,
+  Image,
+  Property,
+} from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
@@ -67,6 +74,7 @@ interface PropertiesFormProps {
   categories: Category[];
   bathrooms: Bathroom[];
   bedrooms: Bedroom[];
+  garages: Garage[];
 }
 
 type PropertiesFormValues = z.infer<typeof formShema>;
@@ -76,6 +84,7 @@ export const PropertyForm = ({
   categories,
   bathrooms,
   bedrooms,
+  garages,
 }: PropertiesFormProps) => {
   const params = useParams();
   const router = useRouter();
@@ -110,7 +119,7 @@ export const PropertyForm = ({
           type: "",
           bathroomId: "",
           bedroomId: "",
-          garage: 0,
+          garageId: "",
           land: 0,
           isFeatured: false,
         },
@@ -415,18 +424,32 @@ export const PropertyForm = ({
             />
             <FormField
               control={form.control}
-              name="garage"
+              name="garageId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Garagem</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      disabled={loading}
-                      {...field}
-                      className="w-full"
-                    />
-                  </FormControl>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecionar"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {garages.map((item) => (
+                        <SelectItem key={item.id} value={item.id}>
+                          {item.quantity}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

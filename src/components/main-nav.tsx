@@ -7,6 +7,7 @@ import Link from "next/link";
 import {
   Bath,
   Bed,
+  CarFront,
   Currency,
   HomeIcon,
   LayoutDashboard,
@@ -50,6 +51,12 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Quartos",
       href: `/bedrooms`,
       active: pathname === `/bedrooms` || pathname === "/bedrooms/new",
+    },
+    {
+      icon: <CarFront />,
+      label: "Garagem",
+      href: `/garages`,
+      active: pathname === `/garages` || pathname === "/garages/new",
     },
     {
       icon: <HomeIcon />,

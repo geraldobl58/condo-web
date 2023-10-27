@@ -22,6 +22,11 @@ const PropertyPage = async ({ params }: { params: { propertyId: string } }) => {
       quantity: "asc",
     },
   });
+  const bedrooms = await prismadb.bedroom.findMany({
+    orderBy: {
+      quantity: "asc",
+    },
+  });
 
   return (
     <>
@@ -29,6 +34,7 @@ const PropertyPage = async ({ params }: { params: { propertyId: string } }) => {
         initialData={properties}
         categories={categories}
         bathrooms={bathrooms}
+        bedrooms={bedrooms}
       />
     </>
   );

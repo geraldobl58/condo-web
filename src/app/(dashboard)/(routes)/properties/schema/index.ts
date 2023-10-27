@@ -10,7 +10,7 @@ export const formShema = z.object({
   description: z.string().min(10),
   type: z.string().min(5),
   bathroomId: z.string().min(1),
-  bedrooms: z.coerce.number(),
+  bedroomId: z.string().min(1),
   garage: z.coerce.number(),
   land: z.coerce.number(),
   isFeatured: z.boolean().default(false).optional(),

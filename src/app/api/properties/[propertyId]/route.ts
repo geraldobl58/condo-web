@@ -26,6 +26,7 @@ export async function GET(
         images: true,
         category: true,
         bathroom: true,
+        bedroom: true,
       },
     });
 
@@ -59,8 +60,8 @@ export async function PATCH(
       price,
       description,
       type,
-      bedrooms,
       bathroomId,
+      bedroomId,
       garage,
       land,
       isFeatured,
@@ -102,12 +103,12 @@ export async function PATCH(
       return new NextResponse("Type is required", { status: 400 });
     }
 
-    if (!bedrooms) {
-      return new NextResponse("Bedrooms is required", { status: 400 });
-    }
-
     if (!bathroomId) {
       return new NextResponse("BathroomId is required", { status: 400 });
+    }
+
+    if (!bedroomId) {
+      return new NextResponse("BedroomId is required", { status: 400 });
     }
 
     if (!garage) {
@@ -137,8 +138,8 @@ export async function PATCH(
         price,
         description,
         type,
-        bedrooms,
         bathroomId,
+        bedroomId,
         garage,
         land,
         isFeatured,

@@ -18,7 +18,6 @@ import { Trash } from "lucide-react";
 import { Category } from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
-import { useOrigin } from "@/hooks/use-origin";
 import { Heading } from "@/components/ui/heading";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { Separator } from "@/components/ui/separator";
@@ -47,7 +46,6 @@ type CategoriesFormValues = z.infer<typeof formShema>;
 export const CategoriesForm = ({ initialData }: CategoriesFormProps) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);

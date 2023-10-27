@@ -20,30 +20,30 @@ export async function POST(req: Request) {
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    const propertyType = await prismadb.propertyType.create({
+    const salerent = await prismadb.saleRent.create({
       data: {
         name,
       },
     });
 
-    return NextResponse.json(propertyType);
+    return NextResponse.json(salerent);
   } catch (error) {
-    console.log("[PROPERTY_TYPE_POST]", error);
+    console.log("[SALE_RENT_POST]", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
 
 export async function GET(req: Request) {
   try {
-    const propertyTypes = await prismadb.propertyType.findMany({
+    const salerent = await prismadb.saleRent.findMany({
       orderBy: {
         name: "asc",
       },
     });
 
-    return NextResponse.json(propertyTypes);
+    return NextResponse.json(salerent);
   } catch (error) {
-    console.log("[PROPERTY_TYPE_GET]", error);
+    console.log("[SALE_RENT_GET]", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

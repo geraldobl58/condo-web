@@ -9,24 +9,24 @@ export async function GET(
     params,
   }: {
     params: {
-      propertyTypeId: string;
+      salerentId: string;
     };
   }
 ) {
   try {
-    if (!params.propertyTypeId) {
-      return new NextResponse("Property Type id is required", { status: 400 });
+    if (!params.salerentId) {
+      return new NextResponse("Sale Rent id is required", { status: 400 });
     }
 
-    const propertyType = await prismadb.propertyType.findUnique({
+    const salerent = await prismadb.saleRent.findUnique({
       where: {
-        id: params.propertyTypeId,
+        id: params.salerentId,
       },
     });
 
-    return NextResponse.json(propertyType);
+    return NextResponse.json(salerent);
   } catch (error) {
-    console.log(["PROPERTY_TYPE_GET"], error);
+    console.log(["SALE_RENT_GET"], error);
   }
 }
 
@@ -36,7 +36,7 @@ export async function PATCH(
     params,
   }: {
     params: {
-      propertyTypeId: string;
+      salerentId: string;
     };
   }
 ) {
@@ -55,22 +55,22 @@ export async function PATCH(
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!params.propertyTypeId) {
-      return new NextResponse("Property Type id is required", { status: 400 });
+    if (!params.salerentId) {
+      return new NextResponse("Sale Rent id is required", { status: 400 });
     }
 
-    const propertyType = await prismadb.propertyType.updateMany({
+    const salerent = await prismadb.saleRent.updateMany({
       where: {
-        id: params.propertyTypeId,
+        id: params.salerentId,
       },
       data: {
         name,
       },
     });
 
-    return NextResponse.json(propertyType);
+    return NextResponse.json(salerent);
   } catch (error) {
-    console.log(["PROPERTY_TYPE_PATCH"], error);
+    console.log(["SALE_RENT_PATCH"], error);
   }
 }
 
@@ -80,7 +80,7 @@ export async function DELETE(
     params,
   }: {
     params: {
-      propertyTypeId: string;
+      salerentId: string;
     };
   }
 ) {
@@ -91,18 +91,18 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!params.propertyTypeId) {
-      return new NextResponse("Property Type id is required", { status: 400 });
+    if (!params.salerentId) {
+      return new NextResponse("Sale Rent id is required", { status: 400 });
     }
 
-    const propertyType = await prismadb.propertyType.deleteMany({
+    const salerent = await prismadb.saleRent.deleteMany({
       where: {
-        id: params.propertyTypeId,
+        id: params.salerentId,
       },
     });
 
-    return NextResponse.json(propertyType);
+    return NextResponse.json(salerent);
   } catch (error) {
-    console.log(["PROPERTY_TYPE_DELETE"], error);
+    console.log(["SALE_RENT_DELETE"], error);
   }
 }

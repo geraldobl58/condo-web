@@ -9,6 +9,7 @@ import {
   Bed,
   CarFront,
   Currency,
+  Haze,
   HomeIcon,
   LayoutDashboard,
   SettingsIcon,
@@ -57,6 +58,13 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Garagem",
       href: `/garages`,
       active: pathname === `/garages` || pathname === "/garages/new",
+    },
+    {
+      icon: <Haze />,
+      label: "Tipo do Imóvel",
+      href: `/property-types`,
+      active:
+        pathname === `/property-types` || pathname === "/property-types/new",
     },
     {
       icon: <HomeIcon />,

@@ -15,6 +15,7 @@ const PropertiesPage = async () => {
       bathroom: true,
       bedroom: true,
       garage: true,
+      kind: true,
     },
   });
 
@@ -25,7 +26,7 @@ const PropertiesPage = async () => {
     address: item.address,
     neighborhood: item.neighborhood,
     price: formattedPrice.format(item.price.toNumber()),
-    type: item.type,
+    kind: item.kind.name,
     bathrooms: item.bathroom.quantity,
     bedrooms: item.bedroom.quantity,
     garage: item.garage.quantity,

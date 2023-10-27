@@ -8,7 +8,7 @@ export const formShema = z.object({
   neighborhood: z.string().min(10),
   price: z.coerce.number(),
   description: z.string().min(10),
-  type: z.string().min(5),
+  kindId: z.string().min(1),
   bathroomId: z.string().min(1),
   bedroomId: z.string().min(1),
   garageId: z.string().min(1),

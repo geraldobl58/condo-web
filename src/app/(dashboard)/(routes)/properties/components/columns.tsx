@@ -11,7 +11,7 @@ export type PropertyColumn = {
   address: string;
   neighborhood: string;
   price: string;
-  type: string;
+  kind: string;
   bedrooms: number;
   bathrooms: number;
   garage: number;
@@ -50,7 +50,7 @@ export const columns: ColumnDef<PropertyColumn>[] = [
     header: "Preço",
   },
   {
-    accessorKey: "type",
+    accessorKey: "kind",
     header: "Tipo",
   },
   {

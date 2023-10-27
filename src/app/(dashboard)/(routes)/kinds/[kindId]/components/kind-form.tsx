@@ -50,13 +50,13 @@ export const KindsForm = ({ initialData }: KindsFormProps) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Editar categoria" : "Nova categoria";
+  const title = initialData ? "Editar registro" : "Nova registro";
   const description = initialData
-    ? "Edite uma categoria existente."
-    : "Adicione uma nova categoria.";
+    ? "Edite um registro existente."
+    : "Adicione um registro.";
   const toastMessage = initialData
-    ? "Categoria atualizada com sucesso!"
-    : "Categoria cadastrada com sucesso!";
+    ? "Registro atualizado com sucesso!"
+    : "Registro cadastrado com sucesso!";
   const action = initialData ? "Editar registro" : "Salvar registro";
 
   const form = useForm<KindsFormValues>({

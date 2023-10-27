@@ -35,6 +35,7 @@ import {
   Category,
   Garage,
   Image,
+  Kind,
   Property,
 } from "@prisma/client";
 
@@ -75,6 +76,7 @@ interface PropertiesFormProps {
   bathrooms: Bathroom[];
   bedrooms: Bedroom[];
   garages: Garage[];
+  kinds: Kind[];
 }
 
 type PropertiesFormValues = z.infer<typeof formShema>;
@@ -85,6 +87,7 @@ export const PropertyForm = ({
   bathrooms,
   bedrooms,
   garages,
+  kinds,
 }: PropertiesFormProps) => {
   const params = useParams();
   const router = useRouter();
@@ -116,7 +119,7 @@ export const PropertyForm = ({
           neighborhood: "",
           price: 0,
           description: "",
-          type: "",
+          kindId: "",
           bathroomId: "",
           bedroomId: "",
           garageId: "",
@@ -337,21 +340,34 @@ export const PropertyForm = ({
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
-              name="type"
+              name="kindId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Tipo</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="EX: (Condominio/Terreo)"
-                      {...field}
-                      className="w-full"
-                    />
-                  </FormControl>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecionar"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {kinds.map((item) => (
+                        <SelectItem key={item.id} value={item.id}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
